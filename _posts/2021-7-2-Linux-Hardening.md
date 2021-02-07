@@ -7,21 +7,25 @@ lot's of people seems to overlook the importance of security.
 
 This "guide" should give you an idea of the minimum requirements when it comes to linux server security.
 
-I will focus on remote vulnerabilities and will not  your server against physical attack vector.
+I will focus on remote vulnerabilities and will not talk about physical attack vector.
 
 You will find the sources at the end.
 
 ---
 
-### 0. Table of content
+## 0. Table of content
 
+1. ssh Security 101
+2. Ensure software is up to date
+3. Password policy
+4. Firewalls
+5. Lynis
 
-
-### 1. ssh Security 101
+## 1. ssh Security 101
 
 the ssh daemon config file is situated in : `/etc/ssh/sshd_config`
 
-#### Change default ssh port
+### Change default ssh port
 
 > Bots might try to access your server on port 22. Changing port will allow you to distinguish them from actual attackers.
 
@@ -32,7 +36,7 @@ Head into your sshd config file
 Port <your port>
 ```
 
-#### Disable root login
+### Disable root login
 
 > Root login into your server is a fatal vulnerability and should be disabled at all cost (make sure you've created another account first)
 
@@ -45,7 +49,7 @@ PermitRootLogin no
 
 
 
-#### Terminate afk users
+### Terminate afk users
 
 > afk users with an ssh session opened on there desktop is a vulnerability as malicious users could access your server while your away
 
@@ -57,7 +61,7 @@ ClientAliveInterval 300
 
 
 
-#### Add a legal disclaimer banner
+### Add a legal disclaimer banner
 
 > Give a last warning to any intruders is a good idea, it might even scare off some people.
 
@@ -79,7 +83,7 @@ All activities performed on this device are logged and monitored.
 
  
 
-#### Disable password login
+### Disable password login
 
 > Password can be cracked, ssh keys can't
 
@@ -96,17 +100,17 @@ PermitEmptyPassword no
 
 
 
-### 2. Ensure software is up to date
+## 2. Ensure software is up to date
 
 I think you can figure that one on your own. just remember that the more software you add the more vulnerable your server.
 
 
 
-### 3. Password policy
+## 3. Password policy
 
 Having a strong pasword policy is key to secure your linux device.
 
-#### Set password expiration
+### Set password expiration
 
 >to enforce a strong password policy it is recomended to change passwords regularly.
 
@@ -131,7 +135,7 @@ INACTIVE=30
 
 
 
-#### Set password requirements
+### Set password requirements
 
 > Minimum password quality requierments are an essential factor to prevent from bruteforce attacks.
 
@@ -156,7 +160,7 @@ ocredit = -1
 
  
 
-### 4. Firewall
+## 4. Firewall
 
 You should use a firewall to block unused ports. The default firewall solution on linux is **Iptables** but users generaly don't configure iptables directy and instead use another firewall.
 
@@ -166,11 +170,11 @@ On Centos the main option is **Firewalld** it is preinstalled on RHEL and fedora
 
 
 
-### 5. Use Lynis
+## 5. Use Lynis
 
 [Lynis](https://cisofy.com/lynis/) allow you to audit your system for security flaws.
 
-#### Install and run Lynis
+### Install and run Lynis
 
 ```bash
 git clone https://github.com/CISOfy/lynis
@@ -184,7 +188,7 @@ Lynis will scan your device and prompt you with advice.
 
 ***
 
-### sources
+## sources
 
 - [CIS Benchmark](https://cisecurity.org/cis-benchmarks/) (Center of Internet Security)
 - [DevSec Hardening Framework](https://dev-sec.io/)
