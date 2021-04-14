@@ -21,6 +21,8 @@ You will find the sources at the end.
 4. Firewalls
 5. Lynis
 
+> TLDR: you should use [Lynis](https://cisofy.com/lynis/) (see 5.)
+
 ## 1. ssh Security 101
 
 the ssh daemon config file is situated in : `/etc/ssh/sshd_config`
